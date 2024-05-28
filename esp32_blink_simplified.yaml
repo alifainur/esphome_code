@@ -1,0 +1,20 @@
+# maklumat projek dan board
+esphome:
+  name: esp32-blink-simplified
+  platform: ESP32
+  board: esp32dev
+
+# mulakan log sama seperti serial monitor
+logger:
+
+# set gpio sebagai output dan sambung suis
+switch:
+  - platform: gpio
+    pin: 19
+    id: gLED
+
+# selang masa untuk menukar suis
+interval:
+  - interval: 1s
+    then:
+      - switch.toggle: gLED
