@@ -1,0 +1,23 @@
+# maklumat projek dan board
+esphome:
+  name: esp32buttontoggle
+  platform: ESP32
+  board: esp32dev
+
+# mulakan log sama seperti serial monitor
+logger:
+
+# set gpio sebagai output dan sambung suis
+switch:
+  - platform: gpio
+    pin: 19
+    id: gLED
+
+# set gpio sebagai input binary
+# toggle setiap kali input high
+binary_sensor:
+  - platform: gpio
+    pin: 18
+    id: btn
+    on_press:
+        - switch.toggle: gLED
