@@ -1,6 +1,6 @@
 # maklumat projek dan board
 esphome:
-  name: esp32buttontoggle
+  name: esp32-button-toggle
   platform: ESP32
   board: esp32dev
 
