@@ -9,8 +9,8 @@ logger:
 
 # mulakan WiFi
 wifi:
-  ssid: 위클리
-  password: nfaizahsel84
+  ssid: ssid_wifi_anda
+  password: password_anda
 
 # mulakan Web Server
 web_server:
