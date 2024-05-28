@@ -14,6 +14,7 @@ switch:
     id: greenLED
 
 # set gpio sebagai input binary
+# high bila tekan dan low lepas
 binary_sensor:
   - platform: gpio
     pin: 18
