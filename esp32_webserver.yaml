@@ -1,0 +1,40 @@
+# maklumat projek dan board
+esphome:
+  name: esp32-web-server
+  platform: ESP32
+  board: esp32dev
+
+# mulakan log sama seperti serial monitor
+logger:
+
+# mulakan WiFi
+wifi:
+  ssid: 위클리
+  password: nfaizahsel84
+
+# mulakan Web Server
+web_server:
+
+# set gpio sebagai output dan sambung suis
+switch:
+  - platform: gpio
+    pin: 19
+    name: "Green LED"
+    id: greenLED
+
+# set gpio sebagai input binary
+# high bila tekan dan low lepas
+# tambahkan code inverted jika respone suis terbalik
+binary_sensor:
+  - platform: gpio
+    pin: 
+      number: 18
+      inverted: true
+    name: "Push Button"
+    id: button
+    on_press:
+      then:
+        - switch.turn_on: greenLED
+    on_release:
+      then:
+        - switch.turn_off: greenLED
