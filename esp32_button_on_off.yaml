@@ -1,0 +1,26 @@
+# maklumat projek dan board
+esphome:
+  name: esp32-button-onoff
+  platform: ESP32
+  board: esp32dev
+
+# mulakan log sama seperti serial monitor
+logger:
+
+# set gpio sebagai output dan sambung suis
+switch:
+  - platform: gpio
+    pin: 19
+    id: greenLED
+
+# set gpio sebagai input binary
+binary_sensor:
+  - platform: gpio
+    pin: 18
+    id: button
+    on_press:
+      then:
+        - switch.turn_on: greenLED
+    on_release:
+      then:
+        - switch.turn_off: greenLED
