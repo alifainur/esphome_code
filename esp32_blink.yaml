@@ -1,0 +1,24 @@
+# maklumat projek dan board
+esphome:
+  name: esp32-blink
+  platform: ESP32
+  board: esp32dev
+
+# mulakan log sama seperti serial monitor
+logger:
+
+# set gpio sebagai output
+output:
+  - platform: gpio
+    pin: 19
+    id: gLED
+
+# selang masa untuk menukar on dan off
+# masa 1s dan 2s berjalan serentak
+interval:
+  - interval: 1s
+    then:
+      - output.turn_on: gLED
+  - interval: 2s
+    then:
+      - output.turn_off: gLED
