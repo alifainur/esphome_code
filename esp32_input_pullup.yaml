@@ -1,0 +1,35 @@
+# maklumat projek dan board
+esphome:
+  name: esp32-button-toggle
+  friendly_name: ESP32 with Button Toggle
+  platform: ESP32
+  board: esp32dev
+
+# mulakan log sama seperti serial monitor
+logger:
+
+# mulakan WiFi
+wifi:
+  ssid: yourWiFiSSID
+  password: yourPASSWORD
+
+web_server:
+
+# set gpio sebagai output dan sambung suis
+switch:
+  - platform: gpio
+    pin: 18
+    name: "Green LED"
+    id: R1
+
+# set gpio sebagai input binary
+# toggle setiap kali input high
+binary_sensor:
+  - platform: gpio
+    pin:
+      number: 19
+      mode: input_pullup
+      inverted: true
+    id: S1
+    on_press:
+        - switch.toggle: R1
