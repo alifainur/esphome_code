@@ -1,0 +1,36 @@
+# maklumat projek dan board
+esphome:
+  name: esp32-dht22
+  platform: ESP32
+  board: esp32dev
+
+# mulakan log sama seperti serial monitor
+logger:
+
+sensor:
+  - platform: dht
+    pin: 23
+    temperature:
+      name: "Temperature"
+      id: temp
+    humidity:
+      name: "Humidity"
+      id: humi
+    model: DHT22
+    update_interval: 2s
+
+# Set pin i2c untuk lcd
+i2c:
+  sda: 21
+  scl: 22
+
+# Jenis LCD yang digunakan
+display:
+  - platform: lcd_pcf8574
+    dimensions: 16x2
+    address: 0x27
+    lambda: |-
+      // cetak bacaan pada lajur pertama dan baris pertama
+      it.printf(0,0, "Temp: %.1f°C", id(temp).state);
+      // cetak bacaan pada lajur pertama dan baris kedua
+      it.printf(0,1, "Humi: %.1f%%", id(humi).state);
