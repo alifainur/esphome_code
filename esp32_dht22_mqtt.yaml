@@ -1,0 +1,41 @@
+# maklumat projek dan board
+esphome:
+  name: esp32-dht22
+  platform: ESP32
+  board: esp32dev
+
+# mulakan log sama seperti serial monitor
+logger:
+  logs:
+    dht: NONE
+    sensor: NONE
+
+# mulakan WiFi
+wifi:
+  ssid: 위클리
+  password: nfaizahsel84
+
+mqtt:
+  broker: 192.168.0.20
+  client_id: esp32-dht22
+
+web_server:
+
+sensor:
+  - platform: dht
+    pin: 19
+    temperature:
+      name: "Temperature"
+      state_topic: esp32-dht22/ali/temp
+    humidity:
+      name: "Humidity"
+      state_topic: esp32-dht22/ali/humi
+    model: DHT22
+    update_interval: 2s
+
+switch:
+  - platform: gpio
+    pin: 18
+    name: "Green LED"
+    id: gLED
+    command_topic: esp32-dht22/ali/led
