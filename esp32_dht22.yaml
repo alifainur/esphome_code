@@ -1,0 +1,26 @@
+# maklumat projek dan board
+esphome:
+  name: esp32-dht22
+  platform: ESP32
+  board: esp32dev
+
+# mulakan log sama seperti serial monitor
+logger:
+
+# mulakan WiFi
+wifi:
+  ssid: 위클리
+  password: nfaizahsel84
+
+# mulakan Web Server
+web_server:
+
+sensor:
+  - platform: dht
+    pin: 19
+    temperature:
+      name: "Temperature"
+    humidity:
+      name: "Humidity"
+    model: DHT22
+    update_interval: 2s
