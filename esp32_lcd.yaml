@@ -1,0 +1,21 @@
+# maklumat projek dan board
+esphome:
+  name: esp32-dht22
+  platform: ESP32
+  board: esp32dev
+
+# mulakan log sama seperti serial monitor
+logger:
+
+# Set pin i2c untuk lcd
+i2c:
+  sda: 21
+  scl: 22
+
+# Jenis LCD yang digunakan
+display:
+  - platform: lcd_pcf8574
+    dimensions: 16x2
+    address: 0x27
+    lambda: |-
+      it.print("Hello World!");
