@@ -12,8 +12,8 @@ logger:
 
 # mulakan WiFi
 wifi:
-  ssid: 위클리
-  password: nfaizahsel84
+  ssid: iotProject
+  password: iotProjectESP32
 
 mqtt:
   broker: 192.168.0.20
