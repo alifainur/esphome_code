@@ -16,7 +16,7 @@ wifi:
   password: password_anda
 
 mqtt:
-  broker: 192.168.0.20
+  broker: broker.hivemq.com
   client_id: esp32-dht22
 
 web_server:
