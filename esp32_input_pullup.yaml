@@ -10,8 +10,8 @@ logger:
 
 # mulakan WiFi
 wifi:
-  ssid: iotProject
-  password: iotProjectESP32
+  ssid: ssid_wifi_anda
+  password: password_anda
 
 web_server:
 
