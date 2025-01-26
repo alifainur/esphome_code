@@ -1,0 +1,49 @@
+# maklumat projek dan board
+esphome:
+  name: esp32-diffuse-servo
+  platform: ESP32
+  board: esp32dev
+
+# mulakan log sama seperti serial monitor
+logger:
+
+# set gpio sebagai input binary
+# high bila tekan dan low lepas
+binary_sensor:
+  - platform: gpio
+    pin: 18
+    id: button
+    on_press:
+      then:
+        - switch.turn_on: greenLED
+    on_release:
+      then:
+        - switch.turn_off: greenLED
+
+# Servo
+servo:
+  - id: servo1
+    output: output1
+
+output:
+  - platform: ledc
+    id: output1
+    pin: 12
+    frequency: 50 Hz #must be 50Hz
+
+# Diffuse Sensor
+# set gpio sebagai input binary
+# high bila mengesan dan low tidak mengesan objek
+binary_sensor:
+    - platform: gpio
+    pin: 13
+    name: "Diffuse Sensor" #must have name to be apear on home assistant
+    id: button
+    on_press:
+      then:
+        - lambda: !lambda |-
+            id(servo1).write(-1);
+    on_release:
+      then:
+        - lambda: !lambda |-
+            id(servo1).write(0);
