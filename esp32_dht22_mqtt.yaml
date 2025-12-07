@@ -21,6 +21,7 @@ mqtt:
 
 web_server:
 
+# hantar data ke mqtt untuk diterima oleh NodeRed
 sensor:
   - platform: dht
     pin: 19
@@ -33,6 +34,7 @@ sensor:
     model: DHT22
     update_interval: 2s
 
+# terima data dari mqtt yang dihantar oleh NodeRed
 switch:
   - platform: gpio
     pin: 18
